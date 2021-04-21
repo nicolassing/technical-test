@@ -1,0 +1,52 @@
+[
+  {
+    "id": 1,
+    "name": "Le Bataclan",
+    "latitude": 48.8630357,
+    "longitude": 2.3706465,
+    "address1": "50 Boulevard Voltaire",
+    "postal_code": "75011",
+    "city": "Paris",
+    "manager": 1
+  },
+  {
+    "id": 2,
+    "name": "Le Trianon",
+    "latitude": 48.8830683,
+    "longitude": 2.3429332,
+    "address1": "80 Boulevard de Rochechouart",
+    "postal_code": "75018",
+    "city": "Paris",
+    "manager": 1
+  },
+  {
+    "id": 3,
+    "name": "L'Olympia",
+    "latitude": 48.8702443,
+    "longitude": 2.3283595,
+    "address1": "28 Boulevard des Capucines",
+    "postal_code": "75009",
+    "city": "Paris",
+    "manager": 1
+  },
+  {
+    "id": 4,
+    "name": "Le Parc des Princes",
+    "latitude": 48.8413634,
+    "longitude": 2.2530693,
+    "address1": "24 Rue du Commandant Guilbaud",
+    "postal_code": "75016",
+    "city": "Paris",
+    "manager": 2
+  },
+  {
+    "id": 5,
+    "name": "Le Stade de France",
+    "latitude": 48.9244726,
+    "longitude": 2.3601325,
+    "address1": "Rue Henri Delaunay",
+    "postal_code": "93200",
+    "city": "Saint-Denis",
+    "manager": 2
+  }
+]

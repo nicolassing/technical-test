@@ -1,0 +1,22 @@
+[
+  {
+    "id": 4,
+    "name": "Le Parc des Princes",
+    "latitude": 48.8413634,
+    "longitude": 2.2530693,
+    "address1": "24 Rue du Commandant Guilbaud",
+    "postal_code": "75016",
+    "city": "Paris",
+    "manager": 2
+  },
+  {
+    "id":   3,
+    "name": "L'Olympia",
+    "latitude": 48.8702443,
+    "longitude": 2.3283595,
+    "address1": "28 Boulevard des Capucines",
+    "postal_code": "75009",
+    "city": "Paris",
+    "manager": 1
+  }
+]

@@ -1,0 +1,42 @@
+settings:
+    index:
+        number_of_shards: 1
+        number_of_replicas: 0
+        analysis:
+            analyzer:
+                french_light:
+                    tokenizer: "icu_tokenizer"
+                    filter: [ "french_elision", "french_stop", "french_keywords", "icu_folding", "lowercase" ]
+                french_heavy:
+                    tokenizer: "icu_tokenizer"
+                    filter: [ "french_elision", "french_stop", "french_keywords","icu_folding", "lowercase", "french_stemmer"]
+            filter:
+                french_elision:
+                    type: "elision"
+                    article_case: true
+                    articles: [ "l", "m", "t", "qu", "n", "s", "j", "d", "c", "jusqu", "quoiqu", "lorsqu", "puisqu" ]
+                french_stop: {
+                    type: "stop",
+                    stopwords: "_french_"
+                },
+                french_keywords: {
+                    type: "keyword_marker",
+                    keywords: [ ]
+                },
+                french_stemmer:
+                    type: "stemmer"
+                    language: "french"
+mappings:
+    dynamic: false
+    properties:
+        name:
+            type: text
+            analyzer: french_light
+            fields: {
+                stemmed: {
+                    type: text,
+                    analyzer: french_heavy
+                }
+            }
+        location:
+            type: geo_point

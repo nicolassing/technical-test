@@ -1,0 +1,76 @@
+version: '3.9'
+
+volumes:
+    database:
+    elasticsearch:
+    cache:
+    log:
+    vendor:
+
+services:
+    db:
+        container_name: sezane_db
+        build: ./docker/mariadb
+        restart: unless-stopped
+        ports:
+            - "3306:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - "database:/var/lib/mysql"
+
+    elasticsearch:
+        container_name: sezane_elasticsearch
+        build: ./docker/elasticsearch
+        restart: unless-stopped
+        ports:
+            - "9200:9200"
+        environment:
+            - cluster.name=default
+            - discovery.type=single-node
+            - bootstrap.memory_lock=true
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+        volumes:
+            - "elasticsearch:/usr/share/elasticsearch/data"
+
+    kibana:
+        container_name: sezane_kibana
+        image: docker.elastic.co/kibana/kibana:7.12.0
+        restart: unless-stopped
+        depends_on:
+            - elasticsearch
+        ports:
+            - "5601:5601"
+
+    php:
+        container_name: sezane_php
+        build: ./docker/php-fpm
+        restart: unless-stopped
+        volumes:
+            - ./:/var/www/app:rw,cached
+            - cache:/var/www/app/var/cache
+            - log:/var/www/app/var/log
+            - vendor:/var/www/app/vendor
+        depends_on:
+            - elasticsearch
+            - db
+
+    nginx:
+        container_name: sezane_nginx
+        build: ./docker/nginx
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/app:rw,cached
+            - cache:/var/www/app/var/cache
+            - log:/var/www/app/var/log
+            - vendor:/var/www/app/vendor
+        depends_on:
+            - php
+
+
+

@@ -1,0 +1,12 @@
+[
+  {
+    "id": 4,
+    "name": "Le Parc des Princes",
+    "latitude": 48.8413634,
+    "longitude": 2.2530693,
+    "address1": "24 Rue du Commandant Guilbaud",
+    "postal_code": "75016",
+    "city": "Paris",
+    "manager": 2
+  }
+]
