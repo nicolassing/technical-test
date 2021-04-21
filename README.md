@@ -1,11 +1,11 @@
 # Sezane 
 
 ## Requirements
-docker
-docker-compose
-make
+- docker
+- docker-compose
+- make
 
-*Make sure you have nothing launched on ports 80, 3306, 9200 and 5601 !*
+**Make sure you have nothing launched on ports 80, 3306, 9200 and 5601 !**
 
 ## Installation
 Short story
@@ -26,7 +26,7 @@ docker-compose exec php bin/console app:elastic:populate
 docker-compose exec php chmod -R 777 var/
 ```
 
-You can now access the website at http://localhost
+You can now access the website at http://localhost/api/doc
 
 ## Tests
 
