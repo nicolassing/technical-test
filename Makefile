@@ -46,7 +46,7 @@ reset: kill install
 start: ## Start the project
 	@printf "$(WARN_COLOR)Start docker services$(NO_COLOR)\n"
 	@printf "$(WARN_COLOR)---------------------$(NO_COLOR)\n"
-	$(DOCKER_COMPOSE) up -d --force-recreate --renew-anon-volumes
+	$(DOCKER_COMPOSE) up -d --no-recreate
 	@printf "\n"
 
 stop: ## Stop the project
@@ -105,10 +105,10 @@ db-validate-schema: ci wait-for-db
 	@printf "\n"
 
 wait-for-es:
-	@./docker/wait-for-healthy-container.sh sezane_elasticsearch
+	@./docker/wait-for-healthy-container.sh sezane_test_elasticsearch
 
 wait-for-db:
-	@./docker/wait-for-healthy-container.sh sezane_db
+	@./docker/wait-for-healthy-container.sh sezane_test_db
 
 .PHONY: db migration elastic wait-for-es wait-for-db
 
